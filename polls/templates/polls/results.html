@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-Light bg-light">
+        <a class="navbar-brand" href="#">Django Project</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Tobble nabigatoin">
+            <span class="navbar-toggle-icon">
+            </span>
+        </button>
+        <div class="collapse-navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home:home' %}">Home<span class="sr-only">(current)</span> </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'polls:index' %}">Polls<span class="sr-only">(current)</span> </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'bookmark:list' %}">Bookmark<span class="sr-only">(current)</span> </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'blog:post_list' %}">Blog<span class="sr-only">(current)</span> </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <p></p>
+     <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+<h1>{{question.question_text}}</h1>
+<ul>
+    {% for choice in question.choice_set.all %}
+    <li>{{choice.choice_text}}--{{choice.votes}}vote{{choice.votes|pluralize}}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+</body>
+</html>
